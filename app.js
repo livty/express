@@ -1,31 +1,28 @@
 var express = require("express");
 var app = express();
+var bodyParser = require("body-parser");
 
-app.get("/speak/:animal",function(req,res){
-    var sounds = {
-        pig: "Oink",
-        cow: "Moo",
-        dog: "Woof Woof!",
-        fox: "What does the fox say",
-        snake: "Hssssss"
-    }
-    var animal = req.params.animal.toLowerCase();
-    var sound = sounds[animal];
-    res.send("The " + animal + " says '" + sound + "'");
+app.use(express.static("public"));
+
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.set("view engine","ejs");
+
+var plan = ["sign up for a salsa class in Santiago de Cali, Colombia","go to Monteverde Extremo Park and try out Tarzan style swing in Costa Rica "];
+
+app.get("/",function(req,res){
+    res.render("home");
 });
-app.get("/repeat/:word/:times",function(req,res){
-    var times = Number(req.params.times);
-    var word = req.params.word;
-    var result ="";
-    for(var i=0; i < times; i++){
-        result += word + " ";
-    }
-        res.send(result);
-    });
-app.get("*",function(req, res) {
-    res.send("Sorry, page is not found...What are you doing with you life?");
+app.post("/addado",function(req,res){
+    var newDo = req.body.newdo;
+    plan.push(newDo);
+    res.redirect("/plan");
 });
-//Make it listen
-app.listen(process.env.PORT, process.env.IP,function(){
-    console.log("server has started");
+app.get("/plan",function(req,res){
+    res.render("plan",{plan:plan});
+});
+
+
+app.listen(process.env.PORT,process.env.IP,function(){
+    console.log("It workss");
 });

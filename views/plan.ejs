@@ -1,0 +1,11 @@
+<% include partials/header%>
+
+<% plan.forEach(function(plan){ %>
+ <li><%= plan %> </li>
+<% }); %>
+
+<form action="/addado" method="POST">
+<input class="city" type="text" name="newdo" placeholder="what are your suggestions?"><br>
+<button>add</button>
+</form>
+<% include partials/footer %>

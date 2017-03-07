@@ -1,0 +1,29 @@
+body{
+    background-image:url("https://images.unsplash.com/photo-1476802379768-84b0af3e39ab?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+    font-family: 'Oldenburg', cursive;
+}
+p{
+    font-size:150%;
+    margin-left: 30%;
+}
+button{
+    font-size: 110%;
+    margin-left: 42%;
+    background-color: transparent;
+    border:none;
+}
+.city{
+  width:100%;
+  padding:13px 13px 13px 10px;
+  font-size:18px;
+  color:#2980b9;
+  background-color: rgba(0,0,0,0.1);
+  box-sizing:border-box;
+  border: 3px solid rgba(0,0,0,0);
+  margin-top: 2%;
+}
+input:focus{
+  background:rgba(255,255,255,0.5);
+  border:3px solid #2980b9;
+  outline:none;
+}
